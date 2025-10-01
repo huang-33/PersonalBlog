@@ -9,9 +9,7 @@
 {{ end -}} -->
 {{ $opts := dict "output" "htmlAndMathml" "displayMode" (not (eq ($.Type) "inline")) -}}
 {{ $result := (transform.ToMath .Inner $opts) -}}
-{{ if $result.Err -}}
-  {{ errorf "Unable to render mathematical markup to HTML using the transform.ToMath function. The KaTeX display engine threw the following error: %s: see %s." $result.Err $.Position -}}
-{{ else -}}
-  {{ $result.Value -}}
+{{ with $result -}}
+  {{ .Value -}}
   {{ $.Page.Store.Set "hasMath" true -}}
 {{ end -}}
