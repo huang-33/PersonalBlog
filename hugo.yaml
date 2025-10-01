@@ -3,6 +3,8 @@ languageCode: 'en-us'
 title: 'My New Hugo Site'
 theme: cleanwhite
 
+relativeURLs: false
+canonifyURLs: true
 
 preserveTaxonomyNames: true
 hasCJKLanguage: true
